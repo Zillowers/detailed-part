@@ -1,5 +1,5 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable no-throw-literal */
-
 const express = require('express');
 const Detail = require('../../db/Detail.js');
 const UserRequest = require('../../db/UserRequest.js');
@@ -8,6 +8,25 @@ const UserRequest = require('../../db/UserRequest.js');
 const router = express.Router();
 
 // CREATE listing detail
+router.post('/homes/create-listing', (req, res) => {
+  const newListing = req.body;
+  let lastIndex = null;
+  Detail.find().sort({ _index: -1 }).limit(1)
+    .then((latestListing) => {
+      lastIndex = latestListing._index;
+      newListing._index = lastIndex + 1;
+      Detail.create({ newListing })
+        .then((entrySuccess) => {
+          res.json(entrySuccess);
+        })
+        .catch((err) => {
+          res.send(err);
+        });
+    })
+    .catch((err) => {
+      res.send(err);
+    });
+});
 
 // READ ONE listing detail
 router.get('/homes/:index/detail-information', (req, res) => {
@@ -25,16 +44,28 @@ router.get('/homes/all/detail-information', (req, res) => {
     });
 });
 
-// UPDATE a listing detail
-router.put('/details/index/:index', (req, res) => {
-  res.end();
+// UPDATE a detail of a listing
+router.patch('/homes/:index/update-info', (req, res) => {
+  Detail.findOneAndUpdate(
+    { _index: req.params.index },
+    { $set: { price: req.body.price } },
+    { new: true },
+  ).then((updatedDoc) => {
+    res.send(updatedDoc);
+  }).catch((err) => {
+    res.status(404).send(err);
+  });
 });
 
 // DELETE a listing detail
-router.delete('/details/index/:index', (req, res) => {
-  // req...
-  Detail.deleteOne({});
-  res.end();
+router.delete('/homes/:index/remove', (req, res) => {
+  Detail.deleteOne({ _index: req.params.index })
+    .then((success) => {
+      res.send(success);
+    })
+    .catch((err) => {
+      res.status(404).send(err);
+    });
 });
 
 // CREATE user request
