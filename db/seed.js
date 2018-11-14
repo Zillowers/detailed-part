@@ -6,7 +6,7 @@ const faker = require('faker');
 const dummies = [];
 const randomize = () => ({
   _index: '',
-  address: faker.address.streetName(),
+  address: faker.address.streetAddress(),
   price: faker.random.number({'min': 800000, 'max': 5000000}),
   body: faker.lorem.paragraphs(),
   subTitle: faker.random.words(),

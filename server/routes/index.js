@@ -1,83 +1,59 @@
+/* eslint-disable no-throw-literal */
+
 const express = require('express');
-const router = express.Router();
-// const db = require('../../db');
 const Detail = require('../../db/Detail.js');
 const UserRequest = require('../../db/UserRequest.js');
+// const db = require('../../db');
 
-//get all details
+const router = express.Router();
+
+
+// GET one detail
+router.get('/homes/:index/detail-information', (req, res) => {
+  Detail.findOne({ _index: req.params.index })
+    .then((data) => {
+      res.send(data);
+    });
+});
+
+// READ ALL details
 router.get('/homes/all/detail-information', (req, res) => {
   Detail.find({})
-    .then(data => {
+    .then((data) => {
       res.send(data);
     });
 });
 
-//get one detail
-router.get('/homes/:index/detail-information', (req, res) => {
-  console.log(req.params);
-  Detail.findOne({_index: req.params.index})
-    .then(data => {
-      res.send(data);
-    });
-});  
-
-//create a detail
-router.post('', (req, res) => {
-  // console.log('POST REQ IS: ', req);
-  // UserRequest.insert(req.body)
-  //   .then({
-  //     res.end();
-  //   })
-});
-
-//update a detail
+// UPDATE a detail
 router.put('/details/index/:index', (req, res) => {
   res.end();
 });
 
-//delete a detail
+// DELETE a detail
 router.delete('/details/index/:index', (req, res) => {
   res.end();
 });
 
-// request
+// CREATE user request
 router.post('/user-request', (req, res) => {
-  console.log('POST REQ IS: ', req.body);
-  let data = req.body.data;
-  let eachPhone = Number(data.phone);
-  // let stack = [];
-  // stack.push(data);
+  const { body: { data } } = req;
+  const eachPhone = Number(data.phone);
   UserRequest.findOne({ phone: eachPhone })
-    .then(result => {
-      if(!eachPhone){
-          throw 'Please Fill the Form';
-      }else if(!result){
+    .then((result) => {
+      if (!eachPhone) {
+        throw 'Please Fill the Form';
+      } else if (!result) {
         UserRequest.create(data)
-          .then( result => {
-            console.log('SEND OK: ', result);
-            res.send(result);
-          })
-        }else{
-          throw 'You already made an offer!';
-        }
+          .then((successEntry) => {
+            res.send(successEntry);
+          });
+      } else {
+        throw 'You already made an offer!';
+      }
     })
-    .catch(err => {
+    .catch((err) => {
       res.send(err);
-    })
-    // .then(data => {
-    //   return data.map(e => (e.phone))
-    // })
-    // .then(arr => {
-    //   if(!arr.includes(Number(req.body.phone))){
-    //     UserRequest.create(data)
-    //       .then( res => {
-    //         console.log(res);
-    //       })
-    //   }else{
-    //     console.log('Same User Exists');
-    //     res.send('Same User Exists');
-    //   }
-    // })
+    });
 });
 
 module.exports = router;
