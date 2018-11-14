@@ -7,8 +7,9 @@ const UserRequest = require('../../db/UserRequest.js');
 
 const router = express.Router();
 
+// CREATE listing detail
 
-// GET one detail
+// READ ONE listing detail
 router.get('/homes/:index/detail-information', (req, res) => {
   Detail.findOne({ _index: req.params.index })
     .then((data) => {
@@ -16,7 +17,7 @@ router.get('/homes/:index/detail-information', (req, res) => {
     });
 });
 
-// READ ALL details
+// READ ALL listing details
 router.get('/homes/all/detail-information', (req, res) => {
   Detail.find({})
     .then((data) => {
@@ -24,13 +25,15 @@ router.get('/homes/all/detail-information', (req, res) => {
     });
 });
 
-// UPDATE a detail
+// UPDATE a listing detail
 router.put('/details/index/:index', (req, res) => {
   res.end();
 });
 
-// DELETE a detail
+// DELETE a listing detail
 router.delete('/details/index/:index', (req, res) => {
+  // req...
+  Detail.deleteOne({});
   res.end();
 });
 
