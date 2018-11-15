@@ -1,8 +1,9 @@
+/* eslint-disable */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import DetailHead from './components/DetailHead.jsx';
 import FollowingContents from './components/FollowingContents.jsx';
-import Aside from './components/Aside.jsx'
+import Aside from './components/Aside.jsx';
 import '../dist/style.css';
 
 class App extends React.Component {
@@ -16,17 +17,27 @@ class App extends React.Component {
       opacity: 0,
       tooltip: false,
       shrinkBody: true,
-      shrinkSection: true
+      shrinkSection: true,
     };
 
     this.showCal = this.showCal.bind(this);
     this.bodyShrinker = this.bodyShrinker.bind(this);
     this.sectionShrinker = this.sectionShrinker.bind(this);
-	}
-
+  }
+  
   componentDidMount(){
-    let idx = Math.floor(Math.random() * (101 - 1)) + 1;
-    this.getOne(idx);
+    this.getOne(window.location.pathname);
+  }
+
+  getOne(path){
+    // path = '/listings/homes/:index/'
+    fetch(`${path}detail-information`)
+      .then(res => res.json())
+      .then(json => {
+        this.setState({
+          data: json
+        });
+      });
   }
 
   showCal(){
@@ -59,16 +70,6 @@ class App extends React.Component {
     this.setState({
       shrinkSection: !this.state.shrinkSection
     })
-  }
-
-  getOne(index){
-    fetch(`/api/homes/${index}/detail-information`)
-      .then(res => res.json())
-      .then(json => {
-        this.setState({
-          data: json
-        })
-      })
   }
 
   render(){

@@ -46,6 +46,7 @@
     "moment": "^2.22.2",
     "mongoose": "^5.3.9",
     "nodemon": "^1.18.4",
+    "path": "^0.12.7",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
     "regenerator-runtime": "^0.12.1",

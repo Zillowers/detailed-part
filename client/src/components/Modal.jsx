@@ -14,7 +14,7 @@ const Modal = ({closeHandler, data}) => (
 					<br/>The detail information will send to <b>{data.mail}</b> soon.</p>
 					<p><b>Thank you for using the Zillow agent service! :)</b></p>
 					</div> :
-					<div><h4>{data}</h4></div>
+					<div><h4>{ data }</h4></div>
 				}
 				<button onClick={closeHandler}>CLOSE</button>
 			</div>
