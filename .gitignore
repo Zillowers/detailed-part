@@ -3,3 +3,5 @@ config.js
 bundle.js
 style.css
 coverage
+*.tsv
+

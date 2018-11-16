@@ -91,3 +91,75 @@ router.post('/user-request', (req, res) => {
 });
 
 module.exports = router;
+
+// router.get('/homes/:index/detail-information', (req, res) => {
+//   Detail.findOne({ _index: req.params.index })
+//     .then((data) => {
+//       const transformedData = {
+//         _index: data._index, // may use auto increment
+//         address: data.address,
+//         price: data.price,
+//         body: data.body,
+//         subTitle: data.subTitle,
+//         details: {
+//           factsAndFeatures: {
+//             type: data.type,
+//             yearBuilt: data.yearBuilt,
+//             heating: data.heating,
+//             cooling: data.cooling,
+//             parking: data.parkingFacts,
+//             lot: data.lotFacts,
+//             daysOnZillow: data.daysOnZillowFacts,
+//             pricePerSqft: data.pricePerSqft,
+//             saves: data.saves,
+//           },
+//           interiorFeatures: {
+//             bedRoom: data.bedRoom,
+//             bathRoom: data.bathRoom,
+//             heatingAndCooling: data.heatingAndCooling,
+//             basement: data.basement,
+//             flooring: data.flooring,
+//             other: data.otherInterior,
+//           },
+//           spacesAndMenities: {
+//             size: data.size,
+//             amenities: data.amenities,
+//             spaces: data.spaces,
+//           },
+//           construction: {
+//             typeAndStyle: data.typeAndStyle,
+//             dates: {
+//               builtIn: data.builtIn,
+//               remodel: data.remodel,
+//             },
+//             materials: {
+//               roof: data.roof,
+//               exterior: data.exterior,
+//             },
+//             other: data.otherConstruction,
+//           },
+//           exteriorFeatures: {
+//             lot: {
+//               lot: data.lot,
+//               lotWidth: data.lotWidth,
+//             },
+//             other: data.other,
+//           },
+//           parking: data.parking,
+//           other: {
+//             lastSold: {
+//               soldDate: data.soldDate,
+//               soldPrice: data.soldPrice,
+//             },
+//           },
+//           activityOnZillow: {
+//             daysOnZillow: data.daysOnZillow,
+//             pastThirtydayView: data.pastThirtydayView,
+//             savedLog: data.savedLog,
+//           },
+//         },
+//       };
+
+//       res.send(transformedData);
+//     });
+// });
