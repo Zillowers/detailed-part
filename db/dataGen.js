@@ -3,7 +3,7 @@ const faker = require('faker');
 const fs = require('fs');
 
 const randomize = () => ({
-  // _index: '', -> only need for mongo or cassandra
+  // _index: '', -> only need for mongo/cassandra
   // address: faker.address.streetAddress(), -> in addresses.tsv
   price: faker.random.number({ min: 800000, max: 5000000 }),
   body: faker.lorem.paragraph(),
@@ -62,3 +62,17 @@ const fakeDataGenerator = (n) => {
   wstream.end();
 };
 fakeDataGenerator(1);
+
+const indexStream = fs.createWriteStream('db/postgres/index.tsv');
+const indexGenerator = (n) => {
+  for (let i = n; i <= 10000000; i += 1) {
+    if (!indexStream.write(`${i}\n`)) {
+      indexStream.once('drain', () => {
+        indexGenerator(i + 1);
+      });
+      return;
+    }
+  }
+  indexStream.end();
+};
+indexGenerator(1);
