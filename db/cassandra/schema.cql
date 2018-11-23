@@ -88,3 +88,47 @@ CREATE TABLE DetailAddressIndex (
 );
 
 -- COPY Detail(id, address, price, body, subtitle, type, yearbuilt, heating, cooling, parkingfacts, lotfacts, daysonzillowfacts, pricepersqft, saves, bedroom, bathroom, heatingandcooling, basement, flooring, otherinterior, size, amenities, spaces, typeandstyle, builtin, remodel, roof, exterior, otherconstruction, lot, lotwidth, other, parking, solddate, soldprice, daysonzillow, pastthirtydayview, savedlog)FROM '/Users/alexburkowsky/Documents/Coding/Hack_Reactor/SDC/detailed-part/db/cassandra/indexedData.tsv' WITH DELIMITER='\t';
+
+-- COPY detailaddressindex(id, address, price, body, subtitle, type, yearbuilt, heating, cooling, parkingfacts, lotfacts, daysonzillowfacts, pricepersqft, saves, bedroom, bathroom, heatingandcooling, basement, flooring, otherinterior, size, amenities, spaces, typeandstyle, builtin, remodel, roof, exterior, otherconstruction, lot, lotwidth, other, parking, solddate, soldprice, daysonzillow, pastthirtydayview, savedlog)FROM '/Users/alexburkowsky/Documents/Coding/Hack_Reactor/SDC/detailed-part/db/cassandra/indexedData.tsv' WITH DELIMITER='\t';
+
+-- For materialized view
+-- (id,
+-- address,
+-- price,
+-- body,
+-- subTitle,
+-- type,
+-- yearBuilt,
+-- heating,
+-- cooling,
+-- parkingFacts,
+-- lotFacts, 
+-- daysOnZillowFacts,
+-- pricePerSqft,
+-- saves,
+-- bedRoom,
+-- bathRoom,
+-- heatingAndCooling,
+-- basement,
+-- flooring,
+-- otherInterior,
+-- size,
+-- amenities,
+-- spaces,
+-- typeAndStyle,
+-- builtIn,
+-- remodel,
+-- roof,
+-- exterior,
+-- otherConstruction,
+-- lot,
+-- lotWidth,
+-- other,
+-- parking,
+-- soldDate,
+-- soldPrice,
+-- daysOnZillow,
+-- pastThirtydayView,
+-- savedLog)
+
+

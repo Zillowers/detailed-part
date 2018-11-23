@@ -38,6 +38,7 @@
     "axios": "^0.18.0",
     "body-parse": "^0.1.0",
     "body-parser": "^1.18.3",
+    "cassandra-driver": "^3.5.0",
     "chai": "^4.2.0",
     "css-loader": "^1.0.1",
     "express": "^4.16.4",
