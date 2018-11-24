@@ -96,7 +96,7 @@ module.exports = router;
 //   Detail.findOne({ _index: req.params.index })
 //     .then((data) => {
 //       const transformedData = {
-//         _index: data._index, // may use auto increment
+//         _index: data.id,
 //         address: data.address,
 //         price: data.price,
 //         body: data.body,
