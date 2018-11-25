@@ -1,0 +1,20 @@
+config:
+  target: "http://localhost:8080"
+  phases: 
+    - duration: 180
+      arrivalRate: 10
+      rampTo: 20
+      name: "Warm-up"
+    # - duration: 240
+    #   arrivalRate: 60
+    #   name: "60 New UPS"
+  payload:
+    path: "./stress-test.csv"
+    fields: 
+      - "id"
+scenarios:
+  - flow:
+    - loop:
+      - get: 
+          url: "/listings/homes/{{ id }}/detail-information"
+      count: 30

@@ -8,7 +8,7 @@ class Model {
   getOneListing(column, identifier) {
     const query = `SELECT * FROM ${this.tablename} WHERE ${column} = ${identifier}`;
     // add { prepare: true } for testing
-    return db.execute(query).then(data => data.rows[0]);
+    return db.execute(query, { prepare: true }).then(data => data.rows[0]);
   }
 }
 
