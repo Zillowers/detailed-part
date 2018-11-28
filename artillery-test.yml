@@ -3,7 +3,7 @@ config:
   phases: 
     - duration: 180
       arrivalRate: 10
-      rampTo: 20
+      rampTo: 30
       name: "Warm-up"
     # - duration: 240
     #   arrivalRate: 60
