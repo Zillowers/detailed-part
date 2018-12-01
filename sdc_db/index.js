@@ -7,9 +7,10 @@ const options = {
   username: process.env.DB_USERNAME,
   password: process.env.DB_PASSWORD,
   contactPoints: [
-    process.env.DB_CONTACT1,
-    process.env.DB_CONTACT2,
-    process.env.DB_CONTACT3,
+    // process.env.DB_CONTACT1,
+    // process.env.DB_CONTACT2,
+    // process.env.DB_CONTACT3,
+    'localhost',
   ],
   keyspace: process.env.DB_KEYSPACE,
   pooling: {
