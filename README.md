@@ -1,14 +1,20 @@
-# detailed-part
->detail body contents for each items
+# HomeFinder: detailed-part
 
-It contains title(address), price, and other details.
+Detailed body components for each house listing. Service contains title, address, price, and other listing details.
 
-(reference page)
-https://www.zillow.com/homedetails/300-State-Route-28-Crystal-Bay-NV-89402/94715841_zpid/?fullpage=true  
+## Related Projects
+
+  - https://github.com/Zillowers/mortgage-calculator
+  - https://github.com/Zillowers/nearby-homes
+  - https://github.com/Zillowers/image-carousel
+
+## Table of Contents
+1. [Requirements](#Requirements)
+
+## Requirements
 
 * npm install ( install node_modules)
 * npm run react-dev ( run webpack )
 * npm run server-dev ( run node server : 8080 )
-* npm run seeding ( seed 100 house information to database)
 * npm run sass-comp ( complile all scss file to one css file )
 * npm test ( jest-enzyme test )
